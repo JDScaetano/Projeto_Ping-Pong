@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping-Pong</title>
+</head>
+<body> 
+    <canvas></canvas>
+    <script> 
+      const canvasEl = document.querySelector("canvas");
+      const canvasCtx = canvasEl.getContext("2d");
+
+      const largLinha = 15  
+      
+      function setup() {
+        canvasEl.width = innerWidth
+        canvasEl.height = innerHeight
+        canvasCtx.width = innerWidth
+        canvasCtx.height = innerHeight   
+    }
+
+      function draw() {
+       //Desenha o campo  
+        canvasCtx.fillStyle = "#286047"
+        canvasCtx.fillRect(0, 0, window.innerWidth, window.innerHeight)
+       
+        //Desenha a linha central 
+        canvasCtx.fillStyle = "#fff"
+        let xLinha = (window.innerWidth/2 - largLinha/2 ) 
+        let yLinha = 0 
+        let larg = largLinha
+        let linhaAlt = window.innerHeight 
+        canvasCtx.fillRect(xLinha, yLinha, larg, linhaAlt)  
+       
+       //Desenha as raquetes 
+       //Raquete Esquerda 
+        let xRaqEsquer = 5 
+        let yRaqEsquer = (window.innerHeight / 2 - window.innerHeight / 8)   
+        let raqLargEsquer = 10
+        let raqAltEsquer = (window.innerHeight / 4)   
+        canvasCtx.fillRect(xRaqEsquer, yRaqEsquer, raqLargEsquer, raqAltEsquer)  
+       
+       //Raquete Direita 
+        let xRaqDir = (window.innerWidth -15 )  
+        let yRaqDir = (window.innerHeight / 2 - window.innerHeight / 8) 
+        let raqLargDir = 10 
+        let raqAltDir = (window.innerHeight / 4)  
+        canvasCtx.fillRect(xRaqDir, yRaqDir, raqLargDir, raqAltDir)  
+
+       //Desenha a bolinha 
+        canvasCtx.beginPath();
+        canvasCtx.arc(200, 385, 20, 0, 2 * Math.PI); 
+        canvasCtx.fill()
+        
+       //Desenha o placar 
+       canvasCtx.font = "bold 72px Arial" 
+       canvasCtx.textAlign = "center"
+       canvasCtx.textBaseline = "top" 
+       canvasCtx.fillStyle = "#111111"  
+       canvasCtx.fillText("3", window.innerWidth/4, 15 ) 
+       canvasCtx.fillText("2",window.innerWidth/4 + window.innerWidth/2, 15) 
+    
+      }
+
+      setup()
+      draw()  
+    </script>
+</body>
+</html>

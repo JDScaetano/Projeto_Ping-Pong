@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping-Pong</title>
+</head>
+<body> 
+    <canvas></canvas>
+    <script> 
+        const canvasEl = document.querySelector("canvas");
+        const canvasCtx = canvasEl.getContext("2d");  
+          
+        function setup() {
+            canvasEl.width = innerWidth
+            canvasEl.height = innerHeight
+            canvasCtx.width = innerWidth
+            canvasCtx.height = innerHeight   
+        }
+
+        function campo() { 
+            canvasCtx.fillStyle = "#286047"
+            canvasCtx.fillRect(0, 0, window.innerWidth, window.innerHeight)  
+        } 
+        
+        function linhaCentral(){
+            canvasCtx.fillStyle = "#fff"
+            let largLinha = 15
+            let linhaAlt = window.innerHeight 
+            let xLinha = (window.innerWidth/2 - largLinha/2 ) 
+            let yLinha = 0 
+            canvasCtx.fillRect(xLinha, yLinha, largLinha, linhaAlt)  
+        }
+        
+        function raqEsquer(){
+            let xRaqEsquer = 5 
+            let yRaqEsquer = (window.innerHeight / 2 - window.innerHeight / 8)   
+            let raqLargEsquer = 10
+            let raqAltEsquer = (window.innerHeight / 4)   
+            canvasCtx.fillRect(xRaqEsquer, yRaqEsquer, raqLargEsquer, raqAltEsquer)  
+        }   
+        
+        function raqDir(){
+            let xRaqDir = (window.innerWidth -15 )  
+            let yRaqDir = (window.innerHeight / 2 - window.innerHeight / 8) 
+            let raqLargDir = 10 
+            let raqAltDir = (window.innerHeight / 4)  
+            canvasCtx.fillRect(xRaqDir, yRaqDir, raqLargDir, raqAltDir)  
+        }   
+        
+        function bola(){
+            canvasCtx.beginPath();
+            canvasCtx.arc(200, 385, 20, 0, 2 * Math.PI); 
+            canvasCtx.fill() 
+        }
+        
+        function placar(){
+            canvasCtx.font = "bold 72px Arial" 
+            canvasCtx.textAlign = "center"
+            canvasCtx.textBaseline = "top" 
+            canvasCtx.fillStyle = "#111111"  
+            canvasCtx.fillText("3", window.innerWidth/4, 15 ) 
+            canvasCtx.fillText("2",window.innerWidth/4 + window.innerWidth/2, 15) 
+        } 
+
+
+        setup()
+        campo()
+        linhaCentral()
+        raqEsquer()
+        raqDir()
+        bola()  
+        placar()
+
+    
+    </script>
+
+</body>
+</html>
